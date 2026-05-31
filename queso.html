@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasty Box - Historia del Queso de Zamora</title>
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FFFEF9;
+      color: #2C2420;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #C0392B;
+      font-size: 2rem;
+    }
+    .historia {
+      background: #FAF8F5;
+      padding: 1.5rem;
+      border-left: 4px solid #C0392B;
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+    button, .btn {
+      background: #C0392B;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 2px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .feedback { margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem; }
+    .stars { font-size: 1.8rem; letter-spacing: 0.5rem; color: #FFD966; cursor: pointer; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>🧀 Tasty Queso · Zamora</h1>
+  <div class="historia">
+    <p>✨ <strong>La historia del productor</strong><br>
+    La quesería OVEKA, en plena Tierra del Pan, elabora este queso con leche cruda de oveja de pastoreo extensivo. Tras 4 meses de maduración en cuevas naturales, adquiere su sabor intenso y su textura firme pero cremosa. Es el resultado de un saber hacer artesano que se niega a perder la tradición.</p>
+    <p>🌿 <strong>Compromiso Tasty Box:</strong> Comercio justo, producto local y talento joven.</p>
+  </div>
+
+  <div class="feedback">
+    <h3>📝 Cuéntanos tu experiencia</h3>
+    <form id="feedbackForm">
+      <label>Del 1 al 5, ¿cómo valoras la calidad de este queso?</label>
+      <div class="stars" id="starRating">★★★★★</div>
+      <input type="hidden" id="ratingValue" value="5">
+
+      <label>¿Recomendarías Tasty Box a otras empresas?</label>
+      <select id="recomienda">
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+      </select>
+
+      <label>¿Quieres dejar un comentario público? (opcional)</label>
+      <textarea rows="3" placeholder="Tu opinión nos ayuda a mejorar..."></textarea>
+
+      <button type="button" id="submitFeedback">Enviar feedback</button>
+    </form>
+    <p style="font-size:0.8rem; color:#888; margin-top:1rem;">Gracias por apoyar el producto local. Volver a <a href="https://tbtastybox.com">tbtastybox.com</a></p>
+  </div>
+</div>
+<script>
+  const stars = document.getElementById('starRating');
+  const ratingInput = document.getElementById('ratingValue');
+  stars.addEventListener('click', (e) => {
+    let index = [...stars.children].indexOf(e.target);
+    if (index >= 0) {
+      ratingInput.value = index + 1;
+      for (let i = 0; i < stars.children.length; i++) {
+        stars.children[i].textContent = i <= index ? '★' : '☆';
+      }
+    }
+  });
+  document.getElementById('submitFeedback').addEventListener('click', () => {
+    alert('¡Gracias por tu valoración! Tu opinión nos ayuda a mejorar.');
+  });
+</script>
+</body>
+</html>
